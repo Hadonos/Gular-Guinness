@@ -1,0 +1,81 @@
+[gd_scene load_steps=10 format=3 uid="uid://3jcrhf52pjbx"]
+
+[ext_resource type="Script" path="res://scripts/player.cs" id="1_3em0l"]
+[ext_resource type="Texture2D" uid="uid://di3v7chv256p4" path="res://assets/pelicanBody2.png" id="1_u3ee8"]
+[ext_resource type="Texture2D" uid="uid://o7b120cjh6o4" path="res://assets/pelicanBody3.png" id="2_qqccw"]
+[ext_resource type="Texture2D" uid="uid://lmuov4p0itha" path="res://assets/pelicanBody4.png" id="3_mbexh"]
+[ext_resource type="Texture2D" uid="uid://dsxt04nksu0r7" path="res://assets/pelicanBody5.png" id="4_d4h72"]
+[ext_resource type="Texture2D" uid="uid://8p10n1tqrn4" path="res://assets/pelicanHead1.png" id="5_mac0c"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pmn5l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qqccw")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_u3ee8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_qqccw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mbexh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_d4h72")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_d4h72")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mbexh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_qqccw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_u3ee8")
+}],
+"loop": true,
+"name": &"gain",
+"speed": 10.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sniuv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_mac0c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q5sd3"]
+radius = 7.49538
+height = 29.945
+
+[node name="player" type="CharacterBody2D"]
+script = ExtResource("1_3em0l")
+
+[node name="PelicanBody" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_pmn5l")
+animation = &"gain"
+frame_progress = 0.0819559
+
+[node name="PelicanHead" type="AnimatedSprite2D" parent="."]
+position = Vector2(32, 0)
+sprite_frames = SubResource("SpriteFrames_sniuv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(1, 2)
+rotation = -2.15374
+shape = SubResource("CapsuleShape2D_q5sd3")

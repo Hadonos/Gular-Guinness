@@ -1,8 +1,0 @@
-[gd_scene format=3 uid="uid://78jvslo7b4xh"]
-
-[node name="Node2D" type="Node2D"]
-
-[node name="TextEdit" type="TextEdit" parent="."]
-offset_right = 541.0
-offset_bottom = 396.0
-text = "Skoden"
