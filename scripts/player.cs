@@ -22,6 +22,9 @@ public partial class player : CharacterBody2D
 	public override void _Process(double delta)
 	{
 		
+		var rotation = GetGlobalMousePosition().AngleToPoint(Position);
+		
+		
 		if(Input.IsActionPressed("move_up"))
 		{
 			 accel.Y -= speed;
