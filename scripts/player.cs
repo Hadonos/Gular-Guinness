@@ -1,48 +1,51 @@
 using Godot;
 using System;
 
+
+
+
 public partial class player : CharacterBody2D
 {
-
+	Vector2 accel = Vector2.Zero;
+	Vector2 vel = Vector2.Zero;
+	
+	float gravity = 5;
+	float speed = 10;
+	float friction = 1;
+	
+	public override void _Ready()
+	{
+		
+	}
+		
 
 	public override void _Process(double delta)
 	{
-		var Speed = 300;
-		var velocity = Vector2.Zero; // The player's movement vector.
-
-		if (Input.IsActionPressed("move_right"))
+		
+		if(Input.IsActionPressed("move_up"))
 		{
-			velocity.X += 1;
+			 accel.Y -= speed;
 		}
-
-		if (Input.IsActionPressed("move_left"))
+		if(Input.IsActionPressed("move_down"))
 		{
-			velocity.X -= 1;
-		}
-
-		if (Input.IsActionPressed("move_down"))
-		{
-			velocity.Y += 1;
-		}
-
-		if (Input.IsActionPressed("move_up"))
-		{
-			velocity.Y -= 1;
-		}
-
-		var animatedSprite2D = GetNode<AnimatedSprite2D>("PelicanBody");
-
-		if (velocity.Length() > 0)
-		{
-			velocity = velocity.Normalized() * Speed;
-			animatedSprite2D.Play("gain");
-		}
-		else
-		{
-			animatedSprite2D.Play("fall");
+			 accel.Y += speed;
 		}
 		
-		Position += velocity * (float)delta;
+		
+		
+		accel.Y += gravity;
+		
+		Mathf.MoveToward(accel.Y, 0, friction);
+		
+		vel += accel;
+		
+		
+		
+		Position += vel * (float)delta;
+		
+
+		
 	}
 
 }
+

@@ -68,7 +68,7 @@ script = ExtResource("1_3em0l")
 [node name="PelicanBody" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_pmn5l")
 animation = &"gain"
-frame_progress = 0.0819559
+frame_progress = 0.379528
 
 [node name="PelicanHead" type="AnimatedSprite2D" parent="."]
 position = Vector2(32, 0)
