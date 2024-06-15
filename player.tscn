@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://o7b120cjh6o4" path="res://assets/pelicanBody3.png" id="2_qqccw"]
 [ext_resource type="Texture2D" uid="uid://lmuov4p0itha" path="res://assets/pelicanBody4.png" id="3_mbexh"]
 [ext_resource type="Texture2D" uid="uid://dsxt04nksu0r7" path="res://assets/pelicanBody5.png" id="4_d4h72"]
-[ext_resource type="Texture2D" uid="uid://8p10n1tqrn4" path="res://assets/pelicanHead1.png" id="5_mac0c"]
+[ext_resource type="Texture2D" uid="uid://dptds6i7xjb3i" path="res://assets/pelicanHead2.png" id="6_isbhr"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pmn5l"]
 animations = [{
@@ -51,7 +51,7 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_mac0c")
+"texture": ExtResource("6_isbhr")
 }],
 "loop": true,
 "name": &"default",
@@ -75,7 +75,6 @@ position = Vector2(32, 0)
 sprite_frames = SubResource("SpriteFrames_sniuv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(1, 2)
 rotation = -2.15374
 shape = SubResource("CapsuleShape2D_q5sd3")
