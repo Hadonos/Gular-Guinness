@@ -13,7 +13,7 @@ public partial class player : CharacterBody2D
 	
 	static readonly float upAngle = .5236F;
 	static readonly float downAngle = 1.57F; 
-	float gravity = 2500;
+	float gravity = 5000;
 	float accel = 10000;
 	float friction = .1F;
 	
@@ -26,7 +26,8 @@ public partial class player : CharacterBody2D
 
 	public override void _Process(double delta)
 	{
-		float maxSpeed = 750;//Mathf.MoveToward(Math.Abs(accel - gravity), 0, Math.Abs(accel - gravity) * friction);
+		float maxDownSpeed = (float)(accel * 1.5 * friction) * (gravity / accel); 
+		float maxUpSpeed = (float)(accel * 1.5 * friction) - maxDownSpeed;
 
 		Vector2 vel = Velocity;
 		
@@ -46,30 +47,22 @@ public partial class player : CharacterBody2D
 			vel.Y += gravity * (float) delta;
 		}
 
-		
 		vel.Y = Mathf.MoveToward(vel.Y, 0, Math.Abs(vel.Y) * friction); //TODO: make friction curve and have alot of fun of form y=x^friction
 
 		//rotation
-		float rotateAmt = vel.Y/maxSpeed;
-		if(rotateAmt >= 0)
+		if(vel.Y >= 0)
 		{
-			GetNode<Marker2D>("%PelicanCenter").Rotation = rotateAmt * downAngle;
+			GetNode<Marker2D>("%PelicanCenter").Rotation = (vel.Y/maxDownSpeed) * downAngle;
+			GD.Print("Down");
 		} else
 		{
-			GetNode<Marker2D>("%PelicanCenter").Rotation = rotateAmt * upAngle;
+			GetNode<Marker2D>("%PelicanCenter").Rotation = (vel.Y/maxUpSpeed) * upAngle;
 		}
-		
-		GD.Print(vel.Y);
-
 		Velocity = vel;
 		MoveAndSlide();
-		
-
-		
+		GD.Print((vel.Y/maxUpSpeed));
+		GD.Print((vel.Y/maxDownSpeed));
+		GD.Print(vel.Y);
+		GD.Print();
 	}
-
-
-	
-
 }
-
