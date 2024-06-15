@@ -8,10 +8,11 @@
 [node name="player" parent="." instance=ExtResource("1_v35ww")]
 position = Vector2(0, -3)
 
-[node name="Camera2D" type="Camera2D" parent="player"]
-position = Vector2(0, 3)
-position_smoothing_enabled = true
-
 [node name="worldBound" parent="." instance=ExtResource("2_mm7hl")]
 position = Vector2(2, 22)
 disable_mode = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true
+position_smoothing_speed = 1.0

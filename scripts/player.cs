@@ -59,7 +59,10 @@ public partial class player : CharacterBody2D
 		Mathf.MoveToward(accel.Y, 0, friction);
 		
 		
-		
+		if(Input.IsActionPressed("debug_stop"))
+		{
+			vel = Vector2.Zero;
+		}
 		
 		
 		Position += vel * (float)delta;
