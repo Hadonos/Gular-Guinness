@@ -53,16 +53,11 @@ public partial class player : CharacterBody2D
 		if(vel.Y >= 0)
 		{
 			GetNode<Marker2D>("%PelicanCenter").Rotation = (vel.Y/maxDownSpeed) * downAngle;
-			GD.Print("Down");
 		} else
 		{
 			GetNode<Marker2D>("%PelicanCenter").Rotation = (vel.Y/maxUpSpeed) * upAngle;
 		}
 		Velocity = vel;
 		MoveAndSlide();
-		GD.Print((vel.Y/maxUpSpeed));
-		GD.Print((vel.Y/maxDownSpeed));
-		GD.Print(vel.Y);
-		GD.Print();
 	}
 }
