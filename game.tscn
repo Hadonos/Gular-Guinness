@@ -1,17 +1,20 @@
 [gd_scene load_steps=3 format=3 uid="uid://ch7ev1blr37hm"]
 
 [ext_resource type="PackedScene" uid="uid://3jcrhf52pjbx" path="res://player.tscn" id="1_v35ww"]
-[ext_resource type="PackedScene" uid="uid://dd05mo6gv643r" path="res://world_bound.tscn" id="2_mm7hl"]
+[ext_resource type="PackedScene" uid="uid://dcmdryhb6qqr1" path="res://water.tscn" id="3_etd15"]
 
 [node name="Game" type="Node2D"]
 
 [node name="player" parent="." instance=ExtResource("1_v35ww")]
-position = Vector2(2, -77)
+position = Vector2(-332, -77)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
+[node name="Camera2D" type="Camera2D" parent="player"]
+position = Vector2(329, 78)
+zoom = Vector2(1.5, 1.5)
+limit_bottom = 475
+limit_smoothed = true
 position_smoothing_enabled = true
-position_smoothing_speed = 1.0
+position_smoothing_speed = 20.0
 
-[node name="StaticBody2D" parent="." instance=ExtResource("2_mm7hl")]
-position = Vector2(1, 86)
+[node name="water" parent="." instance=ExtResource("3_etd15")]
+position = Vector2(0, 145)

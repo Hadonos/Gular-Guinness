@@ -65,12 +65,17 @@ height = 29.945
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_3em0l")
 
-[node name="PelicanBody" type="AnimatedSprite2D" parent="."]
+[node name="PelicanCenter" type="Marker2D" parent="."]
+unique_name_in_owner = true
+
+[node name="PelicanBody" type="AnimatedSprite2D" parent="PelicanCenter"]
+unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_pmn5l")
 animation = &"gain"
 frame_progress = 0.112341
 
-[node name="PelicanHead" type="AnimatedSprite2D" parent="."]
+[node name="PelicanHead" type="AnimatedSprite2D" parent="PelicanCenter"]
+unique_name_in_owner = true
 position = Vector2(32, 0)
 sprite_frames = SubResource("SpriteFrames_sniuv")
 
