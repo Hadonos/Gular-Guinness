@@ -13,6 +13,8 @@ public partial class player : CharacterBody2D
 	float speed = 10;
 	float friction = 1;
 	
+	
+	
 	public override void _Ready()
 	{
 		
@@ -22,25 +24,41 @@ public partial class player : CharacterBody2D
 	public override void _Process(double delta)
 	{
 		
-		var rotation = GetGlobalMousePosition().AngleToPoint(Position);
 		
 		
-		if(Input.IsActionPressed("move_up"))
+		var animated = GetNode<AnimatedSprite2D>("PelicanBody");
+		
+		
+		if(GetViewport().GetMousePosition().Y < Position.Y)
 		{
 			 accel.Y -= speed;
+			 animated.Play("gain");
+			
+		}else
+		{
+			animated.Play("fall");
 		}
+		
+		
 		if(Input.IsActionPressed("move_down"))
 		{
 			 accel.Y += speed;
 		}
 		
 		
-		
+		if(!IsOnFloor())
+		{
 		accel.Y += gravity;
+		vel += accel;
+		}else
+		{
+			accel.Y = 0;
+			vel.Y = 0;
+		}
 		
 		Mathf.MoveToward(accel.Y, 0, friction);
 		
-		vel += accel;
+		
 		
 		
 		

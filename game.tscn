@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ch7ev1blr37hm"]
+[gd_scene load_steps=3 format=3 uid="uid://ch7ev1blr37hm"]
 
 [ext_resource type="PackedScene" uid="uid://3jcrhf52pjbx" path="res://player.tscn" id="1_v35ww"]
+[ext_resource type="PackedScene" uid="uid://dd05mo6gv643r" path="res://world_bound.tscn" id="2_mm7hl"]
 
 [node name="Game" type="Node2D"]
 
@@ -10,3 +11,7 @@ position = Vector2(0, -3)
 [node name="Camera2D" type="Camera2D" parent="player"]
 position = Vector2(0, 3)
 position_smoothing_enabled = true
+
+[node name="worldBound" parent="." instance=ExtResource("2_mm7hl")]
+position = Vector2(2, 22)
+disable_mode = 1
